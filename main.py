@@ -31,10 +31,11 @@ def get_fx_news():
 def fetch_data(ticker):
     df = yf.download(ticker, period="60d", interval="1h")
     # 安全運用のためのテクニカル指標
-    df.ta.sma(length=20, append=True) # 短期
-    df.ta.sma(length=50, append=True) # 長期
-    df.ta.rsi(length=14, append=True)
-    df.ta.atr(length=14, append=True) # ボラティリティ（損切り用）
+            df.ta.sma(length=20, append=True)
+        df.ta.sma(length=50, append=True)
+        df.ta.rsi(length=14, append=True)
+        df.ta.atr(length=14, append=True)
+
     return df.dropna()
 
 df = fetch_data(pair_options[selected_pair])
